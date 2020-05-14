@@ -16,10 +16,16 @@ const getAll = (req, res) => {
 };
 
 const create = (req, res) => {
-    User.create(req.body)
-        .then(()=>res.sendStatus(200))
-        .catch(err=>{console.log(err);
-            res.sendStatus(500);});
+    const data=req.body;
+    User.findOne({email:data.email}).then(body=>{
+            if(!body){
+                User.create(data)
+                    .then(()=>res.sendStatus(200))
+                    .catch(err=>{console.log(err);
+                        res.sendStatus(500);});
+            }else{
+                res.sendStatus(412);
+            }});
 };
 
 

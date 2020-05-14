@@ -10,7 +10,6 @@ module.exports=(req,res,next)=>{
     const token=authHeader.replace('Bearer ','');
     try {
         const payload=jwt.verify(token,secret);
-        console.log(payload);
         if(payload.type!=='access'){
             res.status(401).json({message: 'Токен не действителен!'});
             return;

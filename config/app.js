@@ -6,11 +6,11 @@ module.exports = {
         tokens: {
             access: {
                 type: 'access',
-                expiresIn: '5m',
+                expiresIn: '30m',
             },
             refresh: {
                 type: 'refresh',
-                expiresIn: '20m',
+                expiresIn: '50m',
             },
         },
     },

@@ -44,6 +44,14 @@ const getId=(req, res) => {
             res.sendStatus(500);});
 };
 
+const addComment=(req,res)=>{
+    console.log(req.body);
+    Computers.update({ _id: req.params.id }, { $push: { comments: req.body } })
+        .then(result=>res.sendStatus(200))
+        .catch(err=>{console.log(err);
+            res.sendStatus(500);});
+};
+
 
 module.exports={
     getAll,
@@ -51,4 +59,5 @@ module.exports={
     create,
     update,
     remove,
+    addComment,
 };
